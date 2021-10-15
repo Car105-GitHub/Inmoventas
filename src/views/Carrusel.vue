@@ -1,7 +1,8 @@
 <template>
+<v-container>
   <v-carousel
     cycle
-    height="400"
+    height="300"
     hide-delimiter-background
     show-arrows-on-hover
   >
@@ -18,6 +19,7 @@
         </v-row>
     </v-carousel-item>
   </v-carousel>
+  </v-container>
 </template>
 
 

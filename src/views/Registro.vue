@@ -61,8 +61,7 @@
 
     <v-btn
       color="error"
-      class="mr-4"
-      @click="limpiar()"
+      class="mr-4"   
     >
       Limpiar
     </v-btn>
@@ -148,15 +147,11 @@ methods:{
     .then((res)=>{
       this.Atributos.push(res.data);
 
-
-       this.$swal('success!',
-                    'Inmueble Agregada exitosamente!',
+      this.$swal('success!',
+                    'Inmueble Registrado!',
                     'success');
      
-     
 
-      
-      
       this.atributos.tipo="";
       this.atributos.habitaciones="";
       this.atributos.descripcion="";
@@ -164,6 +159,14 @@ methods:{
       // this.atributos.foto1="";
       // this.atributos.foto2="";
       // this.atributos.foto3="";
+
+
+
+     
+
+      
+      
+
  
    
     })
@@ -172,7 +175,7 @@ methods:{
 
       console.log(e.response);
 
-      alert("Error en guardar registro");
+      alert('Error al Registrar Inmueble !');
 
 
     })

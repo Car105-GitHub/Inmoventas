@@ -1,13 +1,13 @@
 <template>
 <v-container>
 
-    <v-data-table :headers="headers" :items="desserts" sort-by="calories" class="elevation-1">
+    <v-data-table :headers="headers" :items="tablaInmuebles" sort-by="calories" class="elevation-1">
         <template v-slot:top>
             <v-toolbar flat>
                 <v-toolbar-title>LISTADO DE INMUEBLES</v-toolbar-title>
                 <v-divider class="mx-4" inset vertical></v-divider>
                 <v-spacer></v-spacer>
-                <v-dialog v-model="dialog" max-width="500px">
+                <!-- <v-dialog v-model="dialog" max-width="500px">
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on">
                             Registro Nuevo Inmueble
@@ -47,8 +47,8 @@
                             </v-btn>
                         </v-card-actions>
                     </v-card>
-                </v-dialog>
-                <v-dialog v-model="dialogDelete" max-width="500px">
+                </v-dialog> -->
+                <!-- <v-dialog v-model="dialogDelete" max-width="500px">
                     <v-card>
                         <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
                         <v-card-actions>
@@ -58,17 +58,17 @@
                             <v-spacer></v-spacer>
                         </v-card-actions>
                     </v-card>
-                </v-dialog>
+                </v-dialog> -->
             </v-toolbar>
         </template>
-        <template v-slot:item.actions="{ item }">
+        <!-- <template v-slot:item.actions="{ item }">
             <v-icon small class="mr-2" @click="editItem(item._id)">
                 mdi-pencil
             </v-icon>
             <v-icon small @click="eliminarInmueble(item._id)">
                 mdi-delete
             </v-icon>
-        </template>
+        </template> -->
         <template v-slot:no-data>
             <v-btn color="primary" @click="initialize">
                 Reset
@@ -84,10 +84,11 @@ export default {
     data: () => ({
         dialog: false,
         dialogDelete: false,
-        headers: [{
-                text: 'ID  del Inmueble',
-                value: '_id'
-            },
+        headers: [
+            // {
+            //     text: 'ID  del Inmueble',
+            //     value: '_id'
+            // },
             {
                 text: 'Tipo de Inmueble',
                 value: 'tipo'
@@ -98,15 +99,18 @@ export default {
             },
             {
                 text: 'Descripción',
-                value: 'descripción'
+                value: 'descripcion'
             },
             {
                 text: 'Contacto',
                 value: 'contacto',
             },
+            // {
+            //     text: 'Avcciones', value: 'actions', sortable: false
+            // },
 
         ],
-        desserts: [],
+        tablaInmuebles: [],
         editedIndex: -1,
         editedItem: [],
         defaultItem: {
@@ -151,13 +155,13 @@ export default {
         },
 
         deleteItem(item) {
-            this.editedIndex = this.desserts.indexOf(item)
+            this.editedIndex = this.tablaInmuebles.indexOf(item)
             this.editedItem = Object.assign({}, item)
             this.dialogDelete = true
         },
 
         deleteItemConfirm() {
-            this.desserts.splice(this.editedIndex, 1)
+            this.tablaInmuebles.splice(this.editedIndex, 1)
             this.closeDelete()
         },
 
@@ -179,10 +183,10 @@ export default {
 
         save() {
             if (this.editedIndex > -1) {
-                Object.assign(this.desserts[this.editedIndex], this.editedItem)
+                Object.assign(this.tablaInmuebles[this.editedIndex], this.editedItem)
 
             } else {
-                this.desserts.push(this.editedItem)
+                this.tablaInmuebles.push(this.editedItem)
             }
             this.close()
         },
@@ -191,13 +195,29 @@ export default {
 
             this.axios.get('/buscarTodo')
                 .then((response) => {
-                    this.desserts = response.data;
+                    this.tablaInmuebles = response.data;
                 })
                 .catch((e) => {
                     console.log('error' + e)
                 })
 
         },
+
+
+                listarTipoInmueble() {
+
+            this.axios.get('/buscarParametro/tipo')
+                .then((response) => {
+                    this.tablaInmuebles = response.data;
+                })
+                .catch((e) => {
+                    console.log('error' + e)
+                })
+
+        },
+
+
+
 
         editarInmueble(item) {
 
@@ -208,11 +228,11 @@ export default {
                     'success');
                     this.close();
 
-                    const index = this.desserts.findindex(n => n._id === res.data._id)
-                    this.desserts[index].tipo = res.data.tipo;
-                    this.desserts[index].habitaciones = res.data.habitaciones;
-                    this.desserts[index].descripcion = res.data.decripcion;
-                    this.desserts[index].contacto = res.data.contacto;
+                    const index = this.tablaInmuebles.findindex(n => n._id === res.data._id)
+                    this.tablaInmuebles[index].tipo = res.data.tipo;
+                    this.tablaInmuebles[index].habitaciones = res.data.habitaciones;
+                    this.tablaInmuebles[index].descripcion = res.data.decripcion;
+                    this.tablaInmuebles[index].contacto = res.data.contacto;
 
                 }).catch(e => {
                     console.log(e.response)
@@ -229,9 +249,9 @@ export default {
                     'error');
                   
 
-                    const index = this.desserts.findIndex(item => item._id === res.data._id)
-                    this.desserts.splice(index, 1);
-                    this.editedIndex = this.desserts.indexOf(item);
+                    const index = this.tablaInmuebles.findIndex(item => item._id === res.data._id)
+                    this.tablaInmuebles.splice(index, 1);
+                    this.editedIndex = this.tablaInmuebles.indexOf(item);
                     this.editedItem = Object.assign({}, item)
 
                 }).catch(e => {

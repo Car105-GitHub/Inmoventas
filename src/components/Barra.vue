@@ -1,29 +1,27 @@
 <template>
-  <v-card >
+  <v-container >
     <v-app-bar>
-
-
-      <v-spacer></v-spacer>
-
-          <h1 >Encuentra Tu Inmueble Ideal.</h1>
-
-      <v-spacer></v-spacer>
-
-
 
 
       <template v-slot:extension>
         <v-tabs align-with-title>
           <v-tab @click="llamarInicio()">Inicio</v-tab>
           <v-tab @click="llamarTipoInmueble()">Tipos de  Inmuebles</v-tab>
-          <v-tab @click="llamarOfertas()">Ofertas de Inmuebles</v-tab>
-          <v-tab @click="llamarTabla()">Listado de Inmuebles</v-tab>
+          <!-- <v-tab @click="llamarOfertas()">Ofertas de Inmuebles</v-tab> -->
+          <v-tab @click="llamarTabla()">Todos Nuestros Inmuebles</v-tab>
           <v-tab @click="llamarRegistro()">Registro Nuevo Inmueble</v-tab>
-         
-
-
+          <v-tab @click="llamarPrincipal()">Servicios</v-tab>
+          <v-tab @click="llamarAdmInicio()">Administración</v-tab>
         </v-tabs>
       </template>
+
+      <v-container xs12 sm3   >
+      <img   height="120"  :src="require('@/assets/logoInmoventas3.jpg')" >
+      </v-container>
+
+
+
+
     </v-app-bar>
     <v-sheet
       id="scrolling-techniques-3"
@@ -32,7 +30,7 @@
     >
       
     </v-sheet>
-  </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -42,6 +40,11 @@ export default {
     },
 
     methods:{
+
+              llamarAdmInicio(){            
+            this.$router.push('/adminicio')
+        
+    },
 
         llamarRegistro(){
 
@@ -70,6 +73,27 @@ export default {
 
 
         },
+
+        llamarPrincipal(){
+
+            this.$router.push('/principal')
+
+
+        },
+
+        llamarServicios(){
+
+            this.$router.push('/servicios')
+
+
+        },
+
+        llamarAdministracion(){
+
+            this.$router.push('/administracion')
+
+        },
+
 
         llamarTipoInmueble(){
 
