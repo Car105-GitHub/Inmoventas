@@ -10,7 +10,7 @@
           <v-container>
             <v-layout>
               <v-flex>
-                  <v-btn color="Contacto" flat  href="/listaAptos" >Visita Nuestros Apartamentos
+                  <v-btn color="Contacto" flat   >Visita Nuestros Apartamentos
                               
                   </v-btn>
 
@@ -39,7 +39,7 @@
           <v-container>
             <v-layout>
               <v-flex>
-                 <v-btn color="Contacto" flat  href="/listaCasas" > Visita Nuestras Casas 
+                 <v-btn color="Contacto" flat   > Visita Nuestras Casas 
                  
                  </v-btn>
               </v-flex>
@@ -66,7 +66,7 @@
           <v-container>
             <v-layout>
               <v-flex>
-                 <v-btn color="Contacto" flat  href="/listaLocales"  > Visita Nuestros Locales </v-btn>
+                 <v-btn color="Contacto" flat   > Visita Nuestros Locales </v-btn>
               </v-flex>
             </v-layout>
           </v-container>
@@ -91,7 +91,7 @@
           <v-container>
             <v-layout>
               <v-flex>
-                 <v-btn color="Contacto" flat  href="/listaFincas"  > Visita Nuestras Fincas </v-btn>
+                 <v-btn color="Contacto" flat   > Visita Nuestras Fincas </v-btn>
               </v-flex>
             </v-layout>
           </v-container>

@@ -16,8 +16,8 @@ Vue.use(VueSweetalert2);
 Vue.use(VueAxios, axios)
 
 // Agregamos la URL base de nuestra API
-axios.defaults.baseURL = 'http://localhost:3000/api';
-//axios.defaults.baseURL = 'mongodb+srv://car105:KooK3787@cluster0.jddjq.mongodb.net/DatabaseInmoventas.Grupo7?retryWrites=true&w=majority'
+//axios.defaults.baseURL = 'http://localhost:3000/api';
+axios.defaults.baseURL = 'mongodb+srv://car105:KooK3787@cluster0.jddjq.mongodb.net/DatabaseInmoventas.Grupo7?retryWrites=true&w=majority'
 
 Vue.config.productionTip = false
 
